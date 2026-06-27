@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* === Design tokens === */
+/* Fondo blanco fijo: no usar negro/oscuro como base. */
+:root {
+  --background: #ffffff;
+  --ink: #14110f;
+  --ink-soft: #57534e;
+  /* AJUSTAR: hex de marca a confirmar. Cambiar este valor actualiza todo el sitio. */
+  --accent: #f5c518;
+  --accent-ink: #14110f;
+  --line: #e7e3da;
+  --surface: #faf9f6;
+}
+
+@theme inline {
+  --color-bg: var(--background);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+
+  --font-display: var(--font-display-raw);
+  --font-script: var(--font-script-raw);
+  --font-body: var(--font-body-raw);
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--ink);
+    font-family: var(--font-body-raw), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Estado de foco visible para navegación por teclado. */
+  :focus-visible {
+    outline: 0.125rem solid var(--ink);
+    outline-offset: 0.1875rem;
+    border-radius: 0.125rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer utilities {
+  /* Espaciado generoso reutilizado en cada sección del sitio. */
+  .section-y {
+    padding-top: clamp(3.5rem, 8vw, 7rem);
+    padding-bottom: clamp(3.5rem, 8vw, 7rem);
+  }
+
+  .container-page {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 3rem);
+  }
+}

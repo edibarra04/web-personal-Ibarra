@@ -13,6 +13,8 @@ export type Service = {
   shortLabel: string;
   cardSummary: string;
   icon: "camera" | "globe" | "stamp";
+  image: string | null;
+  tags: string[];
   problem: string;
   process: ServiceProcessStep[];
   fitFor: string[];
@@ -27,6 +29,8 @@ export const services: Service[] = [
     cardSummary:
       "Foto y video que muestran tu comida y tu lugar como realmente se sienten en mesa.",
     icon: "camera",
+    image: null,
+    tags: ["Fotografía", "Video", "Redes sociales"],
     problem:
       "Tu comida se ve mejor en persona que en redes. Eso significa que estás perdiendo clientes antes de que pisen el local: deciden con la foto, no con el plato.",
     process: [
@@ -66,6 +70,8 @@ export const services: Service[] = [
     cardSummary:
       "Menú digital y reservas que hacen fácil elegirte desde el celular.",
     icon: "globe",
+    image: null,
+    tags: ["Sitio a medida", "Menú & Reservas", "SEO local"],
     problem:
       "Si alguien te busca desde el celular y no encuentra tu menú claro o una forma simple de reservar, elige al de la competencia que sí lo tiene.",
     process: [
@@ -105,6 +111,8 @@ export const services: Service[] = [
     cardSummary:
       "Una identidad y un mensaje consistente para que se te recuerde y se te elija.",
     icon: "stamp",
+    image: null,
+    tags: ["Identidad visual", "Posicionamiento", "Guía de marca"],
     problem:
       "Sin una marca clara, cada pieza que publicás se ve distinta y no construye nada. La gente no recuerda lo que no es consistente.",
     process: [

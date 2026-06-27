@@ -1,4 +1,14 @@
-export type IconName = "camera" | "globe" | "stamp" | "image" | "arrow-right" | "chat";
+export type IconName =
+  | "camera"
+  | "globe"
+  | "stamp"
+  | "image"
+  | "arrow-right"
+  | "arrow-up-right"
+  | "chat"
+  | "sparkle";
+
+const filledIcons: IconName[] = ["sparkle"];
 
 const paths: Record<IconName, React.ReactNode> = {
   camera: (
@@ -28,15 +38,19 @@ const paths: Record<IconName, React.ReactNode> = {
     </>
   ),
   "arrow-right": <path d="M5 12h14M13 6l6 6-6 6" />,
+  "arrow-up-right": <path d="M7 17 17 7M8 7h9v9" />,
   chat: <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />,
+  sparkle: <path d="M12 2c0 4.5 1.5 7 6 8-4.5 1-6 3.5-6 8 0-4.5-1.5-7-6-8 4.5-1 6-3.5 6-8Z" />,
 };
 
 export default function Icon({ name, className }: { name: IconName; className?: string }) {
+  const isFilled = filledIcons.includes(name);
+
   return (
     <svg
       viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
+      fill={isFilled ? "currentColor" : "none"}
+      stroke={isFilled ? "none" : "currentColor"}
       strokeWidth={1.5}
       strokeLinecap="round"
       strokeLinejoin="round"

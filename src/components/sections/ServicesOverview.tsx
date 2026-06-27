@@ -1,49 +1,42 @@
-import Link from "next/link";
-import SectionHeading, { ScriptWord } from "@/components/ui/SectionHeading";
-import StaggerReveal from "@/components/motion/StaggerReveal";
-import Button from "@/components/ui/Button";
-import Icon from "@/components/ui/Icon";
+import Reveal from "@/components/motion/Reveal";
+import ExpandGallery, { type ExpandGalleryItem } from "@/components/ui/ExpandGallery";
 import { services } from "@/content/services";
+
+const items: ExpandGalleryItem[] = services.map((service, index) => ({
+  number: String(index + 1).padStart(2, "0"),
+  title: service.title,
+  shortTitle: service.shortLabel,
+  description: service.problem,
+  tags: service.tags,
+  href: `/servicios/${service.slug}`,
+  image: service.image,
+  imageAlt: `Foto de ${service.title.toLowerCase()} — reemplazar`,
+}));
 
 export default function ServicesOverview() {
   return (
-    <section className="container-page section-y">
-      <SectionHeading
-        tag="Servicios"
-        title={
-          <>
-            Tres formas de hacer que tu marca se <ScriptWord>elija</ScriptWord>
-          </>
-        }
-        description="Cada servicio resuelve un problema distinto. Juntos, construyen una marca consistente."
-      />
-
-      <StaggerReveal className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((service) => (
-          <Link
-            key={service.slug}
-            href={`/servicios/${service.slug}`}
-            className="group flex flex-col gap-6 rounded-3xl border border-line bg-surface p-8 transition-colors hover:border-ink"
-          >
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent text-accent-ink">
-              <Icon name={service.icon} className="h-6 w-6" />
-            </div>
-            <div>
-              <h3 className="font-display text-xl uppercase">{service.title}</h3>
-              <p className="mt-3 text-base text-ink-soft">{service.cardSummary}</p>
-            </div>
-            <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-ink transition-transform duration-200 group-hover:translate-x-1">
-              Conocer más
-              <Icon name="arrow-right" className="h-4 w-4" />
+    <section className="bg-ink py-20 text-bg sm:py-28">
+      <div className="container-page">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <Reveal className="max-w-xl">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-bg/60">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+              Mis servicios
             </span>
-          </Link>
-        ))}
-      </StaggerReveal>
+            <h2 className="mt-5 font-display text-3xl uppercase leading-[1.05] sm:text-4xl">
+              Tres maneras de que te elijan
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1} className="max-w-sm lg:text-right">
+            <p className="text-base text-bg/60">
+              Pasá el mouse por cada una para ver cómo trabajo. Sueltas o como combo completo.
+            </p>
+          </Reveal>
+        </div>
 
-      <div className="mt-12 flex justify-center">
-        <Button href="/servicios" variant="secondary">
-          Ver todos los servicios
-        </Button>
+        <div className="mt-12">
+          <ExpandGallery items={items} />
+        </div>
       </div>
     </section>
   );

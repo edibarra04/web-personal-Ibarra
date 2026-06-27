@@ -1,6 +1,5 @@
 import Hero from "@/components/sections/Hero";
-import TensionBlock from "@/components/sections/TensionBlock";
-import ProofMarquee from "@/components/sections/ProofMarquee";
+import ServicesTicker from "@/components/sections/ServicesTicker";
 import ServicesOverview from "@/components/sections/ServicesOverview";
 import CredibilityBlock from "@/components/sections/CredibilityBlock";
 import FeaturedProjects from "@/components/sections/FeaturedProjects";
@@ -11,8 +10,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <TensionBlock />
-      <ProofMarquee />
+      <ServicesTicker />
       <ServicesOverview />
       <CredibilityBlock />
       <FeaturedProjects />

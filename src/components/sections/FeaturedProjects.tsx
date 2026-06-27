@@ -1,12 +1,19 @@
 import SectionHeading, { ScriptWord } from "@/components/ui/SectionHeading";
-import StaggerReveal from "@/components/motion/StaggerReveal";
 import Button from "@/components/ui/Button";
-import ProjectCard from "@/components/case-study/ProjectCard";
+import ExpandGallery, { type ExpandGalleryItem } from "@/components/ui/ExpandGallery";
 import { projects } from "@/content/projects";
 
-export default function FeaturedProjects() {
-  const featured = projects.slice(0, 3);
+const items: ExpandGalleryItem[] = projects.slice(0, 2).map((project, index) => ({
+  number: String(index + 1).padStart(2, "0"),
+  title: project.name,
+  description: project.cardSummary,
+  tags: project.scopeTag ? [project.scopeTag] : undefined,
+  href: `/proyectos/${project.slug}`,
+  image: project.cover.src,
+  imageAlt: project.cover.alt,
+}));
 
+export default function FeaturedProjects() {
   return (
     <section className="container-page section-y">
       <SectionHeading
@@ -18,11 +25,9 @@ export default function FeaturedProjects() {
         }
       />
 
-      <StaggerReveal className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-        {featured.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
-      </StaggerReveal>
+      <div className="mt-14">
+        <ExpandGallery items={items} />
+      </div>
 
       <div className="mt-12 flex justify-center">
         <Button href="/proyectos" variant="secondary">

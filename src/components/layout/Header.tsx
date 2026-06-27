@@ -24,7 +24,7 @@ export default function Header() {
           className="font-display text-xl uppercase tracking-tight"
           onClick={() => setOpen(false)}
         >
-          Edgard <span className="font-script text-accent normal-case">Ibarra</span>
+          Edgard <span className="font-script text-ink normal-case">Ibarra</span>
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex">

@@ -5,7 +5,6 @@ import { services } from "@/content/services";
 const items: ExpandGalleryItem[] = services.map((service, index) => ({
   number: String(index + 1).padStart(2, "0"),
   title: service.title,
-  shortTitle: service.shortLabel,
   description: service.problem,
   tags: service.tags,
   href: `/servicios/${service.slug}`,

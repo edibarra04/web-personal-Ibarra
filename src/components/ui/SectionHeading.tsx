@@ -44,5 +44,9 @@ export default function SectionHeading({
 
 /** Palabra clave del titular: script con peso + color de acento. */
 export function ScriptWord({ children }: { children: React.ReactNode }) {
-  return <span className="font-script text-accent normal-case tracking-normal">{children}</span>;
+  return (
+    <span className="inline-block font-script text-accent normal-case tracking-normal">
+      {children}
+    </span>
+  );
 }

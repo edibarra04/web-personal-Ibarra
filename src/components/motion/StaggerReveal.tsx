@@ -8,11 +8,17 @@ type StaggerRevealProps = {
   children: React.ReactNode;
   className?: string;
   stagger?: number;
+  as?: "div" | "h1" | "h2";
 };
 
-/** Revela los hijos directos (tarjetas) con escala/opacidad escalonada. */
-export default function StaggerReveal({ children, className, stagger = 0.12 }: StaggerRevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
+/** Revela los hijos directos (tarjetas o palabras) con escala/opacidad escalonada. */
+export default function StaggerReveal({
+  children,
+  className,
+  stagger = 0.12,
+  as: Tag = "div",
+}: StaggerRevealProps) {
+  const ref = useRef<HTMLElement>(null) as React.RefObject<HTMLDivElement>;
   const reducedMotion = useReducedMotion();
 
   useEffect(() => {
@@ -48,8 +54,8 @@ export default function StaggerReveal({ children, className, stagger = 0.12 }: S
   }, [reducedMotion, stagger]);
 
   return (
-    <div ref={ref} className={className}>
+    <Tag ref={ref} className={className}>
       {children}
-    </div>
+    </Tag>
   );
 }

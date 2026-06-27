@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-md">
             <p className="font-display text-2xl uppercase tracking-tight">
-              Edgard <span className="font-script normal-case">Ibarra</span>
+              <span className="font-script normal-case">Ibarra</span>
             </p>
             <p className="mt-4 text-sm text-bg/70">{siteConfig.role}.</p>
             <p className="mt-2 text-sm text-bg/70">

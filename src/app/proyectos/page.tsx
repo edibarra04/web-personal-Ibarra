@@ -11,7 +11,7 @@ const items: ExpandGalleryItem[] = projects.map((project, index) => ({
   number: String(index + 1).padStart(2, "0"),
   title: project.name,
   description: project.cardSummary,
-  tags: project.scopeTag ? [project.scopeTag] : undefined,
+  tags: project.scopeTags ?? (project.category ? [project.category] : undefined),
   href: `/proyectos/${project.slug}`,
   image: project.cover.src,
   imageAlt: project.cover.alt,

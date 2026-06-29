@@ -17,7 +17,12 @@ export type Project = {
   slug: string;
   name: string;
   dateLabel: string;
-  scopeTag?: string;
+  /** Badge corto junto a la fecha, ej. "Bar de autor" o "Producción fotográfica". */
+  category?: string;
+  /** Fila "Alcance": servicios concretos cubiertos en el proyecto. */
+  scopeTags?: string[];
+  /** Bajada debajo del título, en la página del caso. */
+  heroSummary: string;
   cardSummary: string;
   cover: ProjectImage;
   about: string;
@@ -34,6 +39,7 @@ export const projects: Project[] = [
     slug: "omg",
     name: "OMG",
     dateLabel: "[PLACEHOLDER — mes y año]",
+    heroSummary: placeholder("bajada de una línea para la página del caso OMG"),
     cardSummary: placeholder("resumen breve del proyecto para la tarjeta de listado"),
     cover: { src: null, alt: "Foto de portada del proyecto OMG — reemplazar con imagen real" },
     about: placeholder("contexto del negocio y el reto de marca que tenía OMG"),
@@ -67,35 +73,46 @@ export const projects: Project[] = [
   {
     slug: "la-barra-del-tigre",
     name: "La Barra del Tigre",
-    dateLabel: "[PLACEHOLDER — mes y año]",
-    cardSummary: placeholder("resumen breve del proyecto para la tarjeta de listado"),
+    dateLabel: "2025",
+    category: "Bar de autor",
+    scopeTags: ["Branding", "Fotografía", "Video", "Web con reservas"],
+    heroSummary:
+      "Una cocina premiada que se veía en redes como cualquier bar de la cuadra. Rearmamos la marca, el contenido y la web con reservas para que la presencia digital estuviera a la altura del plato.",
+    cardSummary:
+      "Rebranding completo, fotografía, video y una web con reservas para un bar de autor con cocina premiada.",
     cover: {
       src: null,
       alt: "Foto de portada del proyecto La Barra del Tigre — reemplazar con imagen real",
     },
-    about: placeholder("contexto del negocio y el reto de marca que tenía La Barra del Tigre"),
-    objective: placeholder("objetivo específico acordado con La Barra del Tigre"),
-    approach: placeholder("enfoque y estrategia aplicados en el proyecto La Barra del Tigre"),
+    about:
+      "Bar de autor con cocina reconocida, pero con un Instagram hecho desde el celular y sin sistema de reservas online.",
+    objective:
+      "Que la marca comunicara el nivel real de la propuesta y capturar reservas directas sin depender del teléfono.",
+    approach:
+      "Rebranding completo, dirección de arte para foto y video, y una web rápida con menú y reservas integradas.",
     process: [
       {
         title: "Diagnóstico y posicionamiento",
-        description: placeholder("hallazgos del diagnóstico inicial de La Barra del Tigre"),
+        description: "Entender el negocio y dónde se pierde valor.",
       },
       {
         title: "Identidad visual",
-        description: placeholder("decisiones de identidad visual tomadas para La Barra del Tigre"),
+        description: "La marca que se reconoce antes de leer el cartel.",
       },
       {
         title: "Estrategia de contenido",
-        description: placeholder("lineamientos de contenido definidos para La Barra del Tigre"),
+        description: "Qué se dice, cómo y dónde.",
       },
       {
         title: "Ejecución",
-        description: placeholder("cómo se puso en marcha la estrategia en La Barra del Tigre"),
+        description: "Producción de foto, video, web y piezas.",
       },
     ],
     gallery: [
-      { src: null, alt: "Pieza real del proyecto La Barra del Tigre — reemplazar 1" },
+      {
+        src: "/images/proyectos/la-barra-del-tigre/galeria-01.png",
+        alt: "Pieza de marca de La Barra del Tigre",
+      },
       { src: null, alt: "Pieza real del proyecto La Barra del Tigre — reemplazar 2" },
       { src: null, alt: "Pieza real del proyecto La Barra del Tigre — reemplazar 3" },
       { src: null, alt: "Pieza real del proyecto La Barra del Tigre — reemplazar 4" },
@@ -105,6 +122,7 @@ export const projects: Project[] = [
     slug: "lima",
     name: "LIMA",
     dateLabel: "[PLACEHOLDER — mes y año]",
+    heroSummary: placeholder("bajada de una línea para la página del caso LIMA"),
     cardSummary: placeholder("resumen breve del proyecto para la tarjeta de listado"),
     cover: { src: null, alt: "Foto de portada del proyecto LIMA — reemplazar con imagen real" },
     about: placeholder("contexto del negocio y el reto de marca que tenía LIMA"),
@@ -139,7 +157,8 @@ export const projects: Project[] = [
     slug: "fritanga-las-palmeras",
     name: "Fritanga Las Palmeras",
     dateLabel: "[PLACEHOLDER — mes y año]",
-    scopeTag: "Producción fotográfica",
+    category: "Producción fotográfica",
+    heroSummary: placeholder("bajada de una línea para la página del caso Fritanga Las Palmeras"),
     cardSummary: placeholder(
       "resumen breve del proyecto para la tarjeta de listado (alcance: producción fotográfica)"
     ),

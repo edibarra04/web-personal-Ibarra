@@ -2,6 +2,7 @@ import Link from "next/link";
 import { services } from "@/content/services";
 import { siteConfig } from "@/content/site-config";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
 
 export default function Footer() {
   return (
@@ -60,7 +61,17 @@ export default function Footer() {
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-bg/50">Contacto</p>
               <ul className="mt-4 flex flex-col gap-3">
-                <li className="text-sm text-bg/80">WhatsApp: reemplazar número</li>
+                <li className="text-sm text-bg/80">
+                  WhatsApp:{" "}
+                  <a
+                    href={buildWhatsAppLink()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-accent"
+                  >
+                    +505 8383 6472
+                  </a>
+                </li>
                 <li className="text-sm text-bg/80">Correo: reemplazar correo</li>
               </ul>
             </div>
